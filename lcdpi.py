@@ -1,9 +1,17 @@
-from gpiozero import Buzzer
+import RPi.GPIO as GPIO
+import time
 
-buzzer = Buzzer(15)
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+BUZZER = 23
+GPIO.setup(BUZZER, GPIO.OUT)
 
-while True:
-    buzzer.on()
-    sleep(1)
-    buzzer.off()
-    sleep(1)
+def buzz(noteFreq, duration):
+    halveWaveTime = 1 / (noteFreq * 2 )
+    waves = int(duration * noteFreq)
+    for i in range(waves):
+       GPIO.output(BUZZER, True)
+       time.sleep(halveWaveTime)
+       GPIO.output(BUZZER, False)
+       time.sleep(halveWaveTime)
+buzz(262, 0.5)
