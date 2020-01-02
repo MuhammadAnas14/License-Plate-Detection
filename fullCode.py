@@ -2,7 +2,6 @@ import numpy as np
 import cv2
 import pytesseract
 from PIL import Image
-
 import pyttsx3
 from googletrans import Translator
 
