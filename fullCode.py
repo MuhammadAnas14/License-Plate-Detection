@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import pytesseract
 from PIL import Image
+
 import pyttsx3
 from googletrans import Translator
 
@@ -21,12 +22,12 @@ def get_numberplate(image,contours):
     print("Extracted Number Plate :",result)
     # importing the pyttsx library
     import pyttsx3
-    # initialisation 
+    #initialisation 
     engine = pyttsx3.init() 
     engine.say(str(result))
     engine.runAndWait() 
     
-    cv2.waitKey(0)    
+    cv2.waitKey(500)    
 
     cv2.destroyAllWindows()
 import cv2
@@ -44,7 +45,7 @@ selected_file = ""
 def get_image():
     root.withdraw() #hide main window
     fileName = filedialog.askopenfilename(
-        filetypes = [ ("png files","*.png"),("All files", ".*") ],
+        filetypes = [ ("All files","*.*") ],
         initialdir="/home/anas/Desktop/VehicleNumberPlateRecognition/Images(Input)", #this one should be changed according to local reference
         title="Select your image")
 
